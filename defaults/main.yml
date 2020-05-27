@@ -1,0 +1,5 @@
+---
+# defaults file for openssl
+openssl_items:
+  - name: my_openssl_key
+    common_name: my.example.com

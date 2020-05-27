@@ -1,0 +1,27 @@
+---
+# vars file for openssl
+_openssl_packages:
+  default:
+    - pyopenssl
+  Fedora:
+    - python3-pyOpenSSL
+
+openssl_packages: "{{ _openssl_packages[ansible_distribution] | default(_openssl_packages['default']) }}"
+
+_openssl_key_directory:
+  default: /tmp
+  RedHat: /etc/pki/tls/private
+
+openssl_key_directory: "{{ _openssl_key_directory[ansible_os_family] | default(_openssl_key_directory['default']) }}"
+
+_openssl_csr_directory:
+  default: /tmp
+  RedHat: /etc/pki/tls/misc
+
+openssl_csr_directory: "{{ _openssl_csr_directory[ansible_os_family] | default(_openssl_csr_directory['default']) }}"
+
+_openssl_crt_directory:
+  default: /tmp
+  RedHat: /etc/pki/tls/certs
+
+openssl_crt_directory: "{{ _openssl_crt_directory[ansible_os_family] | default(_openssl_crt_directory['default']) }}"
