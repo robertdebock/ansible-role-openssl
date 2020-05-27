@@ -18,6 +18,9 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
 
   roles:
     - role: robertdebock.openssl
+      openssl_items:
+        - name: my_openssl_key
+          common_name: my.example.com
 ```
 
 The machine may need to be prepared using `molecule/resources/prepare.yml`:
@@ -30,6 +33,9 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
 
   roles:
     - role: robertdebock.bootstrap
+    - role: robertdebock.buildtools
+    - role: robertdebock.epel
+    - role: robertdebock.python_pip
 ```
 
 For verification `molecule/resources/verify.yml` run after the role has been applied.
@@ -53,9 +59,11 @@ These variables are set in `defaults/main.yml`:
 ```yaml
 ---
 # defaults file for openssl
-openssl_items:
-  - name: my_openssl_key
-    common_name: my.example.com
+
+# You can pass a list of ssl key/csr/crt/p12's to generate:
+# openssl_items:
+#   - name: my_openssl_key
+#     common_name: my.example.com
 ```
 
 ## Requirements
@@ -68,7 +76,9 @@ The following roles can be installed to ensure all requirements are met, using `
 ```yaml
 ---
 - robertdebock.bootstrap
+- robertdebock.buildtools
 - robertdebock.epel
+- robertdebock.python_pip
 
 ```
 
@@ -87,9 +97,8 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |---------|----|
 |alpine|all|
 |debian|all|
-|el|7, 8|
+|el|8|
 |fedora|all|
-|opensuse|all|
 |ubuntu|all|
 
 The minimum version of Ansible required is 2.8 but tests have been done to:
