@@ -20,3 +20,5 @@ _openssl_crt_directory:
   RedHat: /etc/pki/tls/certs
 
 openssl_crt_directory: "{{ _openssl_crt_directory[ansible_os_family] | default(_openssl_crt_directory['default']) }}"
+
+openssl_key_certificate: "{{ openssl_private_key.content | b64decode }} + {{ openssl_certifcate | b64decode }}"
