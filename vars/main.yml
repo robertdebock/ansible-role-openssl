@@ -1,14 +1,7 @@
 ---
 # vars file for openssl
-_openssl_packages:
-  default:
-    - pyopenssl
-  Fedora:
-    - python3-pyOpenSSL
-  CentOS-8:
-    - python3-pyOpenSSL
-
-openssl_packages: "{{ _openssl_packages[ansible_distribution] | default(_openssl_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_openssl_packages['default'])) }}"
+openssl_pip_packages:
+  - pyOpenSSL
 
 _openssl_key_directory:
   default: /tmp

@@ -1,5 +1,7 @@
 ---
 # defaults file for openssl
-openssl_items:
-  - name: my_openssl_key
-    common_name: my.example.com
+
+# You can pass a list of ssl key/csr/crt/p12's to generate:
+# openssl_items:
+#   - name: my_openssl_key
+#     common_name: my.example.com

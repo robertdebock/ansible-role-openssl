@@ -1,10 +1,10 @@
 ---
 # tasks file for openssl
-- name: install packages
-  package:
-    name: "{{ openssl_packages }}"
-  register: openssl_install_packages
-  until: openssl_install_packages is succeeded
+- name: install pip packages
+  pip:
+    name: "{{ openssl_pip_packages }}"
+  register: openssl_install_pip_packages
+  until: openssl_install_pip_packages is succeeded
   retries: 3
 
 - name: create ssl key
