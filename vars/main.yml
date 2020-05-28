@@ -5,18 +5,21 @@ openssl_pip_packages:
 
 _openssl_key_directory:
   default: /tmp
+  Debian: /etc/ssl/private
   RedHat: /etc/pki/tls/private
 
 openssl_key_directory: "{{ _openssl_key_directory[ansible_os_family] | default(_openssl_key_directory['default']) }}"
 
 _openssl_csr_directory:
   default: /tmp
+  Debian: /etc/ssl
   RedHat: /etc/pki/tls/misc
 
 openssl_csr_directory: "{{ _openssl_csr_directory[ansible_os_family] | default(_openssl_csr_directory['default']) }}"
 
 _openssl_crt_directory:
   default: /tmp
+  Debian: /etc/ssl/certs
   RedHat: /etc/pki/tls/certs
 
 openssl_crt_directory: "{{ _openssl_crt_directory[ansible_os_family] | default(_openssl_crt_directory['default']) }}"
