@@ -9,7 +9,7 @@
 
 - name: create key directory
   file:
-    path: "{{ openssl_key_directory }}
+    path: "{{ openssl_key_directory }}"
     state: directory
     mode: "0750"
     owner: root
