@@ -7,56 +7,30 @@
   until: openssl_install_pip_packages is succeeded
   retries: 3
 
+- name: create key directory
+  file:
+    path: "{{ openssl_key_directory }}
+    state: directory
+    mode: "0750"
+    owner: root
+    group: root
+
+- name: create csr directory
+  file:
+    path: "{{ openssl_csr_directory }}"
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+
+- name: create crt directory
+  file:
+    path: "{{ openssl_crt_directory }}"
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+
 - name: include create.yml
   include_tasks: create.yml
   loop: "{{ openssl_items }}"
-
-# - name: create ssl key
-#   openssl_privatekey:
-#     path: "{{ openssl_key_directory }}/{{ item.name }}.key"
-#   loop: "{{ openssl_items }}"
-# 
-# - name: create ssl csr
-#   openssl_csr:
-#     path: "{{ openssl_csr_directory }}/{{ item.name }}.csr"
-#     privatekey_path: "{{ openssl_key_directory }}/{{ item.name }}.key"
-#     common_name: "{{ item.common_name }}"
-#   loop: "{{ openssl_items }}"
-# 
-# - name: create ssl certificates
-#   openssl_certificate:
-#     path: "{{ openssl_crt_directory}}/{{ item.name }}.crt"
-#     privatekey_path: "{{ openssl_key_directory }}/{{ item.name }}.key"
-#     csr_path: "{{ openssl_csr_directory }}/{{ item.name }}.csr"
-#     provider: selfsigned
-#   loop: "{{ openssl_items }}"
-# 
-# - name: create PKCS#12 file
-#   openssl_pkcs12:
-#     action: export
-#     path: "{{ openssl_key_directory }}/{{ item.name }}.p12"
-#     friendly_name: "{{ item.name }}"
-#     privatekey_path: "{{ openssl_key_directory }}/{{ item.name }}.key"
-#     certificate_path: "{{ openssl_crt_directory}}/{{ item.name }}.crt"
-#     state: present
-#   loop: "{{ openssl_items }}"
-# 
-# - name: read private key
-#   slurp:
-#     src: "{{ openssl_key_directory }}/{{ item.name }}.key"
-#   register: openssl_private_key
-#   loop: "{{ openssl_items }}"
-# 
-# - name: read certificate
-#   slurp:
-#     src:
-#   register: openssl_certifcate
-#   loop: "{{ openssl_items }}"
-# 
-# - name: create combined private_key and certificate file
-#   copy:
-#     dest: "{{ openssl_key_directory }}/{{ item.name }}.pcks12
-#     content: |
-#       {{ openssl_private_key.content | b64decode | trim  }}
-#       {{ openssl_certifcate | b64decode | trim }}
-#   loop: "{{ openssl_items }}"
