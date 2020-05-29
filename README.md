@@ -77,7 +77,6 @@ openssl_csr_directory: "{{ _openssl_csr_directory[ansible_os_family] | default(_
 
 # This directory stores public, persistent objects. (crt)
 openssl_crt_directory: "{{ _openssl_crt_directory[ansible_os_family] | default(_openssl_crt_directory['default']) }}"
-
 ```
 
 ## Requirements
@@ -110,10 +109,11 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |container|tags|
 |---------|----|
 |alpine|all|
-|debian|all|
-|el|8|
-|fedora|all|
-|ubuntu|all|
+|el|7, 8|
+|debian|buster, bullseye|
+|fedora|31, 32|
+|opensuse|all|
+|ubuntu|focal, bionic, xenial|
 
 The minimum version of Ansible required is 2.8 but tests have been done to:
 
