@@ -2,14 +2,14 @@
 - name: create ssl key
   openssl_privatekey:
     path: "{{ openssl_key_directory }}/{{ item.name }}.key"
-    mode: "0640"
+    mode: "640"
 
 - name: create ssl csr
   openssl_csr:
     path: "{{ openssl_csr_directory }}/{{ item.name }}.csr"
     privatekey_path: "{{ openssl_key_directory }}/{{ item.name }}.key"
     common_name: "{{ item.common_name }}"
-    mode: "0644"
+    mode: "644"
 
 - name: create ssl certificates
   openssl_certificate:
@@ -17,7 +17,7 @@
     privatekey_path: "{{ openssl_key_directory }}/{{ item.name }}.key"
     csr_path: "{{ openssl_csr_directory }}/{{ item.name }}.csr"
     provider: selfsigned
-    mode: "0644"
+    mode: "644"
 
 - name: create PKCS#12 file
   openssl_pkcs12:
@@ -27,7 +27,7 @@
     privatekey_path: "{{ openssl_key_directory }}/{{ item.name }}.key"
     certificate_path: "{{ openssl_crt_directory}}/{{ item.name }}.crt"
     state: present
-    mode: "0640"
+    mode: "640"
 
 - name: read private key
   slurp:
@@ -45,4 +45,4 @@
     content: |-
       {{ openssl_private_key.content | b64decode | trim }}
       {{ openssl_certifcate.content | b64decode | trim }}
-    mode: "0640"
+    mode: "640"
