@@ -34,3 +34,6 @@
 - name: include create.yml
   include_tasks: create.yml
   loop: "{{ openssl_items }}"
+  when:
+    - openssl_items is defined
+    - openssl_items | length > 0
