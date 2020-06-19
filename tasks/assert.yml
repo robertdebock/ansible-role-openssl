@@ -1,0 +1,15 @@
+---
+- name: test if openssl_key_directory is set correctly
+  assert:
+    that:
+      - openssl_key_directory is defined
+
+- name: test if openssl_csr_directory is set correctly
+  assert:
+    that:
+      - openssl_csr_directory is defined
+
+- name: test if x is set correctly
+  assert:
+    that:
+      - openssl_crt_directory is defined
