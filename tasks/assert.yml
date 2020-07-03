@@ -11,7 +11,7 @@
       - openssl_csr_directory is defined
       - openssl_key_directory | length > 0
 
-- name: test if x is set correctly
+- name: test if openssl_crt_directory is set correctly
   assert:
     that:
       - openssl_crt_directory is defined
