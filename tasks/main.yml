@@ -6,9 +6,6 @@
 - name: install pip packages
   pip:
     name: "{{ openssl_pip_packages }}"
-  register: openssl_install_pip_packages
-  until: openssl_install_pip_packages is succeeded
-  retries: 3
 
 - name: create key directory
   file:
