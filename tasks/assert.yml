@@ -4,15 +4,18 @@
     that:
       - openssl_key_directory is defined
       - openssl_key_directory | length > 0
+    quiet: yes
 
 - name: test if openssl_csr_directory is set correctly
   assert:
     that:
       - openssl_csr_directory is defined
       - openssl_key_directory | length > 0
+    quiet: yes
 
 - name: test if openssl_crt_directory is set correctly
   assert:
     that:
       - openssl_crt_directory is defined
       - openssl_key_directory | length > 0
+    quiet: yes
