@@ -7,11 +7,11 @@
   delegate_to: localhost
 
 - name: install pip packages
-  pip:
+  ansible.builtin.pip:
     name: "{{ openssl_pip_packages }}"
 
 - name: create key directory
-  file:
+  ansible.builtin.file:
     path: "{{ openssl_key_directory }}"
     state: directory
     mode: "750"
@@ -19,7 +19,7 @@
     group: root
 
 - name: create csr directory
-  file:
+  ansible.builtin.file:
     path: "{{ openssl_csr_directory }}"
     state: directory
     mode: "755"
@@ -27,7 +27,7 @@
     group: root
 
 - name: create crt directory
-  file:
+  ansible.builtin.file:
     path: "{{ openssl_crt_directory }}"
     state: directory
     mode: "755"
@@ -35,7 +35,7 @@
     group: root
 
 - name: include create.yml
-  include_tasks: create.yml
+  ansible.builtin.include_tasks: create.yml
   loop: "{{ openssl_items }}"
   when:
     - openssl_items is defined

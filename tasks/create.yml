@@ -40,7 +40,7 @@
   register: openssl_certifcate
 
 - name: create combined private_key and certificate file
-  copy:
+  ansible.builtin.copy:
     dest: "{{ openssl_key_directory }}/{{ item.name }}.keycrt"
     content: |-
       {{ openssl_private_key.content | b64decode | trim }}
