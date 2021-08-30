@@ -6,5 +6,5 @@
 
   tasks:
     - name: try openssl version
-      command:
+      ansible.builtin.command:
         cmd: openssl version
