@@ -2,9 +2,9 @@
 
 Make openssl certificates.
 
-|GitHub|GitLab|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-openssl/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-openssl/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-openssl/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-openssl)|[![quality](https://img.shields.io/ansible/quality/48939)](https://galaxy.ansible.com/robertdebock/openssl)|[![downloads](https://img.shields.io/ansible/role/d/48939)](https://galaxy.ansible.com/robertdebock/openssl)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-openssl.svg)](https://github.com/robertdebock/ansible-role-openssl/releases/)|
+|GitHub|GitLab|Downloads|Version|
+|------|------|---------|-------|
+|[![github](https://github.com/robertdebock/ansible-role-openssl/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-openssl/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-openssl/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-openssl)|[![downloads](https://img.shields.io/ansible/role/d/24558)](https://galaxy.ansible.com/robertdebock/openssl)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-openssl.svg)](https://github.com/robertdebock/ansible-role-openssl/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -114,7 +114,7 @@ The minimum version of Ansible required is 2.12, tests have been done to:
 - The current version.
 - The development version.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-openssl/issues)
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-openssl/issues).
 
 ## [License](#license)
 
