@@ -18,7 +18,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   gather_facts: true
 
   roles:
-    - role: ansible-role-openssl
+    - role: robertdebock.openssl
       openssl_items:
         - name: my_openssl_key
           common_name: my.example.com
