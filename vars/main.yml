@@ -17,7 +17,9 @@ _openssl_pip_packages:
   default:
     - pyOpenSSL
   Alpine: []
-  Debian: []
+  Debian:
+    - cryptography>=3.3
+    - pyOpenSSL
 openssl_pip_packages: "{{ _openssl_pip_packages[ansible_os_family] | default(_openssl_pip_packages['default']) }}"
 
 _openssl_key_directory:
